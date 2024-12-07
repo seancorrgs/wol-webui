@@ -29,7 +29,7 @@ Simple web app that allows you to manage and monitor the status of machines on y
 
 3. Run the Docker container:
     ```bash
-    docker run -d -p 80:80 wol-web
+    docker run -d --network host wol-web
     ```
 
 4. Open your web browser and navigate to `http://localhost:80`
@@ -46,11 +46,10 @@ Simple web app that allows you to manage and monitor the status of machines on y
 2. Create a `docker-compose.yml` file with the following content:
     ```yaml
     services:
-      wol-web:
+    wol-web:
         build: .
         image: wol-web
-        ports:
-          - "80:80"
+        network_mode: host
     ```
 
 3. Run the Docker Compose:

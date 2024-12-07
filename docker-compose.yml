@@ -1,0 +1,7 @@
+services:
+  wol-web:
+      build: .
+      image: wol-web
+      network_mode: host
+      volumes:
+        - ./dockerdata/machines.json:/app/src/machines.json
