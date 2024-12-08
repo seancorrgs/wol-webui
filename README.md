@@ -66,9 +66,34 @@ Simple web app that allows you to manage and monitor the status of machines on y
 
 1. Click the "Spin up" button next to the machine to send a WOL packet.
 
+
 ### Running backups
 
+To backup the `machines.json` file to another device or server, follow these steps:
 
+1. **Copy the file using `scp` (Secure Copy Protocol):**
+
+    ```bash
+    scp ./dockerdata/machines.json user@remote_host:/path/to/backup/
+    ```
+
+    Replace `user` with your username on the remote host, `remote_host` with the IP address or hostname of the remote server, and `/path/to/backup/` with the directory path where you want to store the backup.
+
+2. **Automate the backup process (optional):**
+
+    You can create a cron job to automate the backup process. Open the crontab file:
+
+    ```bash
+    crontab -e
+    ```
+
+    Add the following line to schedule a daily backup at 2 AM:
+
+    ```bash
+    0 2 * * * cp /path/to/dockerdata/machines.json /path/to/backup/
+    ```
+
+    Save and close the crontab file.
 
 ## Acknowledgements
 
