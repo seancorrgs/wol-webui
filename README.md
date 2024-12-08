@@ -14,44 +14,26 @@ Simple web app that allows you to manage and monitor the status of machines on y
 
 ## Installation
 
-##### Install with docker 
-
-1. Clone the repository:
-    ```bash
-    git clone http://giturl
-    cd wol-loadbal
-    ```
-
-2. Build the Docker image:
-    ```bash
-    docker build -t wol-web .
-    ```
-
-3. Run the Docker container:
-    ```bash
-    docker run -d --network host wol-web
-    ```
-
-4. Open your web browser and navigate to `http://localhost:80`
-
-
 ##### Install with docker-compose
 
 1. Clone the repository:
     ```bash
-    git clone http://giturl
-    cd wol-loadbal
+    git clone https://github.com/seancorrgs/wol-webui.git
+    cd wol-webui
     ```
 
-2. Create a `docker-compose.yml` file with the following content:
+2. Create a `docker-compose.yml` file with the following content (an example is provided):
 
     ```yaml
     services:
-    wol-web:
-        image: seancorrgs/wol-webui:latest
-        network_mode: host
-        volumes:
-            - ./dockerdata/machines.json:/app/src/machines.json
+        wol-web:
+            # build: . ## If you would like to build the image from source
+            image: seancorrgs/wol-webui:latest
+            network_mode: host
+            environment:
+                - LISTEN_PORT=8002
+            volumes:
+                - ./dockerdata/machines.json:/app/src/machines.json
     ```
 
 3. Run the Docker Compose:
@@ -83,6 +65,10 @@ Simple web app that allows you to manage and monitor the status of machines on y
 ### Spinning Up a Machine
 
 1. Click the "Spin up" button next to the machine to send a WOL packet.
+
+### Running backups
+
+
 
 ## Acknowledgements
 
