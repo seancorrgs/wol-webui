@@ -44,12 +44,14 @@ Simple web app that allows you to manage and monitor the status of machines on y
     ```
 
 2. Create a `docker-compose.yml` file with the following content:
+
     ```yaml
     services:
     wol-web:
-        build: .
-        image: wol-web
+        image: seancorrgs/wol-webui:latest
         network_mode: host
+        volumes:
+            - ./dockerdata/machines.json:/app/src/machines.json
     ```
 
 3. Run the Docker Compose:

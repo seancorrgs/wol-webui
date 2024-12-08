@@ -1,7 +1,6 @@
 services:
   wol-web:
-      build: .
-      image: wol-web
+      image: seancorrgs/wol-webui:latest
       network_mode: host
       volumes:
         - ./dockerdata/machines.json:/app/src/machines.json
