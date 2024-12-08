@@ -1,6 +1,9 @@
 services:
   wol-web:
+      # build: . ## If you would like to build the image from source
       image: seancorrgs/wol-webui:latest
       network_mode: host
+      environment:
+        - LISTEN_PORT=8002
       volumes:
         - ./dockerdata/machines.json:/app/src/machines.json
